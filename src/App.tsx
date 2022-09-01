@@ -3,6 +3,8 @@ import './App.css';
 import Accordion from "./components/Accordion/Accordion";
 import {Rating} from "./components/Rating/Rating";
 import {OnOff} from "./components/OnOff/OnOff";
+import UncontrolledAccordion from "./components/UncontrolledAccordion/UncontrolledAccordion";
+import {UncontrolledRating} from "./components/UncontrolledRating/UncontrolledRating";
 
 // создана функция способом function declaration
 // она создается для объявления компоненты н-р function App()
@@ -24,9 +26,13 @@ function App() {
   console.log("App rendering")
   return (
      <div>
-       <OnOff on={true}/>
-       <OnOff on={false}/>
+       <OnOff/>
+       <OnOff/>
 
+       <UncontrolledAccordion title="Menu"/>
+       <UncontrolledAccordion title={"Users"}/>
+
+       <UncontrolledRating />
 
       {/* <PageTitle title="this is APP component"/>
        <PageTitle title="my friend"/>
