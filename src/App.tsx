@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Accordion from "./components/Accordion/Accordion";
 import {Rating} from "./components/Rating/Rating";
+import {OnOff} from "./components/OnOff/OnOff";
 
 // создана функция способом function declaration
 // она создается для объявления компоненты н-р function App()
@@ -23,7 +24,11 @@ function App() {
   console.log("App rendering")
   return (
      <div>
-       <PageTitle title="this is APP component"/>
+       <OnOff on={true}/>
+       <OnOff on={false}/>
+
+
+      {/* <PageTitle title="this is APP component"/>
        <PageTitle title="my friend"/>
        Article 1
        <Rating value={3}/>
@@ -36,7 +41,7 @@ function App() {
        <Rating value={3}/>
        <Rating value={4}/>
        <Rating value={5}/>
-       <Rating value={0}/>
+       <Rating value={0}/>*/}
      </div>
   );
 }
