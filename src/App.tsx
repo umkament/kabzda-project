@@ -34,7 +34,7 @@ function App() {
      <div className='App'>
 
 
-       <OnOff setOn={setOn}
+       <OnOff setOn={()=>{setOn(!on)}}
               on={on}
        />
 
@@ -45,8 +45,10 @@ function App() {
 
        <Accordion title="Menu"
                   collapsed={accordionCollapsed}
-                  setAccordionCollapsed={setAccordionCollapsed}
+                  setAccordionCollapsed={()=>{setAccordionCollapsed(!accordionCollapsed)}}
        />
+
+       <UncontrolledOnOff onChange={setOn}/> {on.toString()}
 
    {/*    <UncontrolledAccordion title="Menu"/>
        <UncontrolledAccordion title={"Users"}/>
