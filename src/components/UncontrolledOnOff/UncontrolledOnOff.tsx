@@ -1,12 +1,12 @@
 import {useState} from "react";
 
 export type PropsType = {
- on: boolean
- setOn: (on: boolean)=>void
+ //on: boolean
 }
 
-export function OnOff(props: PropsType) {
+export function UncontrolledOnOff(props: PropsType) {
 
+ let [on, setOn] = useState(false)
 
  const onStyle = {
   width: '30px',
@@ -15,7 +15,7 @@ export function OnOff(props: PropsType) {
   display: 'inline-block',
   padding: '2px',
   marginLeft: '2px',
-  background: props.on ? 'green' : 'white'
+  background: on ? 'green' : 'white'
  }
  const offStile = {
   width: '30px',
@@ -24,7 +24,7 @@ export function OnOff(props: PropsType) {
   display: 'inline-block',
   padding: '2px',
   marginLeft: '2px',
-  background: props.on ? 'white' : 'red'
+  background: on ? 'white' : 'red'
  }
  const lampStyle = {
   width: '3px',
@@ -34,12 +34,12 @@ export function OnOff(props: PropsType) {
   display: 'inline-block',
   padding: '6px',
   marginLeft: '5px',
-  background: props.on ? 'green' : 'red'
+  background: on ? 'green' : 'red'
  }
 
  return <div>
- <div style={onStyle} onClick={()=>{props.setOn(true)}}>on</div>
- <div style={offStile} onClick={()=>{props.setOn(false)}}>off</div>
+ <div style={onStyle} onClick={()=>{setOn(true)}}>on</div>
+ <div style={offStile} onClick={()=>{setOn(false)}}>off</div>
  <div style={lampStyle}></div>
  </div>
  }

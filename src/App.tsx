@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import Accordion from "./components/Accordion/Accordion";
-import {Rating} from "./components/Rating/Rating";
-import {OnOff} from "./components/OnOff/OnOff";
+import {Rating, RatingValueType} from "./components/Rating/Rating";
+import {UncontrolledOnOff} from "./components/UncontrolledOnOff/UncontrolledOnOff";
 import UncontrolledAccordion from "./components/UncontrolledAccordion/UncontrolledAccordion";
 import {UncontrolledRating} from "./components/UncontrolledRating/UncontrolledRating";
+import Accordion from "./components/Accordion/Accordion";
+import {OnOff} from "./components/OnOff/OnOff";
 
 // создана функция способом function declaration
 // она создается для объявления компоненты н-р function App()
@@ -24,15 +25,33 @@ function Hello() {
 
 function App() {
   console.log("App rendering")
+
+  let [ratingValue, setRatingValue] = useState<RatingValueType>(0)
+  let [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
+  let [on, setOn] = useState<boolean>(false)
+
   return (
      <div className='App'>
-       <OnOff/>
-       <OnOff/>
 
-       <UncontrolledAccordion title="Menu"/>
+
+       <OnOff setOn={setOn}
+              on={on}
+       />
+
+
+       <Rating value={ratingValue}
+               setRatingValue={setRatingValue}
+       />
+
+       <Accordion title="Menu"
+                  collapsed={accordionCollapsed}
+                  setAccordionCollapsed={setAccordionCollapsed}
+       />
+
+   {/*    <UncontrolledAccordion title="Menu"/>
        <UncontrolledAccordion title={"Users"}/>
 
-       <UncontrolledRating />
+       <UncontrolledRating />*/}
 
       {/* <PageTitle title="this is APP component"/>
        <PageTitle title="my friend"/>
