@@ -25,7 +25,7 @@ function Hello() {
 function App() {
   console.log("App rendering")
   return (
-     <div>
+     <div className='App'>
        <OnOff/>
        <OnOff/>
 
