@@ -2,7 +2,7 @@ import {useState} from "react";
 
 export type PropsType = {
  on: boolean
- setOn: ()=>void
+ setOn: (on: boolean)=>void
 }
 
 export function OnOff(props: PropsType) {
@@ -38,8 +38,8 @@ export function OnOff(props: PropsType) {
  }
 
  return <div>
- <div style={onStyle} onClick={props.setOn}>on</div>
- <div style={offStile} onClick={props.setOn}>off</div>
+ <div style={onStyle} onClick={()=>props.setOn(true)}>on</div>
+ <div style={offStile} onClick={()=>props.setOn(false)}>off</div>
  <div style={lampStyle}></div>
  </div>
  }
