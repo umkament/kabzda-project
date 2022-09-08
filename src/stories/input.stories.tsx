@@ -1,4 +1,4 @@
-import React, {MouseEventHandler, useRef, useState} from 'react';
+import React, {ChangeEvent, MouseEventHandler, useRef, useState} from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 
@@ -60,6 +60,50 @@ export const GetValueOfUncontrolledInputByButtonAndRef = () => {
   </>
 }
 
+export const ControlledInput = ()=> {
+  const [parentValue, setParentValue] = useState('')
+
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setParentValue(e.currentTarget.value)
+
+  }
+  return <input
+     value={parentValue}
+     onChange={onChange}
+  />
+}
+
+export const ControlledCheckbox = ()=> {
+  const [parentValue, setParentValue] = useState(true)
+
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setParentValue(e.currentTarget.checked)
+
+  }
+  return <input type='checkbox'
+                checked={parentValue}
+                onChange={onChange}
+  />
+}
+
+export const ControlledSelect = ()=> {
+  const [parentValue, setParentValue] = useState<string | undefined>(undefined)
+
+  const onChange = (e: ChangeEvent<HTMLSelectElement> ) => {
+    setParentValue(e.currentTarget.value)
+
+  }
+  return <select value={parentValue}
+                onChange={onChange}>
+    <option>none</option>
+    <option value={1}>Berlin</option>
+    <option value={2}>Paris</option>
+    <option value={3}>Amsterdam</option>
+  </select>
+
+}
 
 
-       export const ControlledInput = () => <input value={'it-icubator.by'}/>
+
+
+       export const ControlledInputWithFixedValue = () => <input value={'it-icubator.by'}/>
