@@ -1,5 +1,4 @@
-import React, {ChangeEvent, MouseEventHandler, useRef, useState} from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import React, {ChangeEvent, useRef, useState} from 'react';
 
 
 export default {
@@ -16,7 +15,7 @@ export const TrackValueOfUncontrolledInput = () => {
 
   const [value, setValue] = useState('')
   return <>
-    <input onChange={(event)=>{
+    <input onChange={(event) => {
       setValue(event.currentTarget.value)
 
       //можно записать более развернуто
@@ -25,27 +24,30 @@ export const TrackValueOfUncontrolledInput = () => {
     }
     }/>
     - {value}
-    </>
+  </>
 }
 
 // 2. с помощью ссылок (рефов) ref
 // поскольку как в предыдущем примере нам может быть не нужно узнавать каждое впечатываемое значение в input
 // а нам достаточно лишь контролировать значение после, например, нажатия определенной кнопки
-           // 2.1 данный пример - это норушение принципов работы с React
-           // поскольку мы напрямую влезли в DOM-элементы,а это нарущение принципов
+// 2.1 данный пример - это норушение принципов работы с React
+// поскольку мы напрямую влезли в DOM-элементы,а это нарущение принципов
 export const GetValueOfUncontrolledInputByButton = () => {
 
   const [value, setValue] = useState('')
   return <>
-    <input id={'inputID'}/> <button onClick={
-    (e)=>{
-      const el = document.getElementById('inputID') as HTMLInputElement
-      setValue(el.value)
-    }
-  }>save</button> - actual value: {value}
+    <input id={'inputID'}/>
+    <button onClick={
+      (e) => {
+        const el = document.getElementById('inputID') as HTMLInputElement
+        setValue(el.value)
+      }
+    }>save
+    </button>
+    - actual value: {value}
   </>
 }
-            // пример с использованием хука useRef (создание ссылок)
+// пример с использованием хука useRef (создание ссылок)
 export const GetValueOfUncontrolledInputByButtonAndRef = () => {
 
   const [value, setValue] = useState('')
@@ -56,11 +58,13 @@ export const GetValueOfUncontrolledInputByButtonAndRef = () => {
     setValue(el.value)
   }
   return <>
-    <input ref={inputRef}/> <button onClick={save}>save</button> - actual value: {value}
+    <input ref={inputRef}/>
+    <button onClick={save}>save</button>
+    - actual value: {value}
   </>
 }
 
-export const ControlledInput = ()=> {
+export const ControlledInput = () => {
   const [parentValue, setParentValue] = useState('')
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -73,7 +77,7 @@ export const ControlledInput = ()=> {
   />
 }
 
-export const ControlledCheckbox = ()=> {
+export const ControlledCheckbox = () => {
   const [parentValue, setParentValue] = useState(true)
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -86,15 +90,15 @@ export const ControlledCheckbox = ()=> {
   />
 }
 
-export const ControlledSelect = ()=> {
+export const ControlledSelect = () => {
   const [parentValue, setParentValue] = useState<string | undefined>(undefined)
 
-  const onChange = (e: ChangeEvent<HTMLSelectElement> ) => {
+  const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setParentValue(e.currentTarget.value)
 
   }
   return <select value={parentValue}
-                onChange={onChange}>
+                 onChange={onChange}>
     <option>none</option>
     <option value={1}>Berlin</option>
     <option value={2}>Paris</option>
@@ -104,6 +108,4 @@ export const ControlledSelect = ()=> {
 }
 
 
-
-
-       export const ControlledInputWithFixedValue = () => <input value={'it-icubator.by'}/>
+export const ControlledInputWithFixedValue = () => <input value={'it-icubator.by'}/>

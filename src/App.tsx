@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import './App.css';
 import {Rating, RatingValueType} from "./components/Rating/Rating";
 import {UncontrolledOnOff} from "./components/UncontrolledOnOff/UncontrolledOnOff";
-import UncontrolledAccordion from "./components/UncontrolledAccordion/UncontrolledAccordion";
-import {UncontrolledRating} from "./components/UncontrolledRating/UncontrolledRating";
 import Accordion from "./components/Accordion/Accordion";
 import {OnOff} from "./components/OnOff/OnOff";
 
@@ -34,7 +32,9 @@ function App() {
      <div className='App'>
 
 
-       <OnOff setOn={()=>{setOn(!on)}}
+       <OnOff setOn={() => {
+         setOn(!on)
+       }}
               on={on}
        />
 
@@ -45,17 +45,19 @@ function App() {
 
        <Accordion title="Menu"
                   collapsed={accordionCollapsed}
-                  setAccordionCollapsed={()=>{setAccordionCollapsed(!accordionCollapsed)}}
+                  setAccordionCollapsed={() => {
+                    setAccordionCollapsed(!accordionCollapsed)
+                  }}
        />
 
        <UncontrolledOnOff onChange={setOn}/> {on.toString()}
 
-   {/*    <UncontrolledAccordion title="Menu"/>
+       {/*    <UncontrolledAccordion title="Menu"/>
        <UncontrolledAccordion title={"Users"}/>
 
        <UncontrolledRating />*/}
 
-      {/* <PageTitle title="this is APP component"/>
+       {/* <PageTitle title="this is APP component"/>
        <PageTitle title="my friend"/>
        Article 1
        <Rating value={3}/>

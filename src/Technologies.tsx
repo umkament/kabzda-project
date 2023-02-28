@@ -1,4 +1,3 @@
-
 const Technologies = () => {
   return (
      <div>

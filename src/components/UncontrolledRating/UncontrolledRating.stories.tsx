@@ -7,7 +7,7 @@ export default {
   component: UncontrolledRating,
 
   argTypes: {
-    backgroundColor: { control: 'color' },
+    backgroundColor: {control: 'color'},
   },
 }
 
