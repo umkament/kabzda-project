@@ -18,7 +18,7 @@ export const TrackValueOfUncontrolledInput = () => {
     <input onChange={(event) => {
       setValue(event.currentTarget.value)
 
-      //можно записать более развернуто
+      //можно записать развернуто, присвоив переменную значению, получаемому из инпута
       // const actualValue = event.currentTarget.value
       // setValue(actualValue)
     }
@@ -29,10 +29,13 @@ export const TrackValueOfUncontrolledInput = () => {
 
 // 2. с помощью ссылок (рефов) ref
 // поскольку как в предыдущем примере нам может быть не нужно узнавать каждое впечатываемое значение в input
-// а нам достаточно лишь контролировать значение после, например, нажатия определенной кнопки
+// и взять значение из е.currentTarget.value мы не можем, потому что это событие происходило с инпутом,
+// а в нашем случае событие будет происходитьс кнопкой при ее нажатии
+//то есть кнопка должна в момент нажатия взять откуда-то значение сидящее в инпуте в этот момент
+
 // 2.1 данный пример - это норушение принципов работы с React
 // поскольку мы напрямую влезли в DOM-элементы,а это нарущение принципов
-export const GetValueOfUncontrolledInputByButton = () => {
+export const GetValueOfUncontrolledInputByButtonPress = () => {
 
   const [value, setValue] = useState('')
   return <>
@@ -47,7 +50,13 @@ export const GetValueOfUncontrolledInputByButton = () => {
     - actual value: {value}
   </>
 }
+
+
 // пример с использованием хука useRef (создание ссылок)
+// с помощью хука useRef создаем ссылку
+// затем привязываем эту ссылку к элементу на который мы хотим ссылаться ref={inputRef}
+// далее в колбэке onClick-а мы обращаемся к этой ссылке, через current фиксируем у нее значение на что именно она ссылается
+// после сетаем значение через .value в state
 export const GetValueOfUncontrolledInputByButtonAndRef = () => {
 
   const [value, setValue] = useState('')

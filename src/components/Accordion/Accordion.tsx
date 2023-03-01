@@ -6,9 +6,12 @@ type ItemType = {
   value: any
 }
 
-type AccordionPropsType = {
+export type AccordionPropsType = {
   title: string
   collapsed: boolean
+  /**
+   * example for comment, you should input /**, and after that pushed button 'enter'
+   */
   setAccordionCollapsed: () => void
 }
 
@@ -34,7 +37,9 @@ function AccordionTitle(props: AccordionTitlePropsType) {
   )
 }
 
-export type AccordionBodyPropsType = {}
+export type AccordionBodyPropsType = {
+
+}
 
 function AccordionBody(props: AccordionBodyPropsType) {
   console.log("AccordionBody rendering")
