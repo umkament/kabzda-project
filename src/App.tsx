@@ -45,9 +45,9 @@ function App() {
 
        <Accordion title="Menu"
                   collapsed={accordionCollapsed}
-                  setAccordionCollapsed={() => {
-                    setAccordionCollapsed(!accordionCollapsed)
-                  }}
+                  setAccordionCollapsed={() => {setAccordionCollapsed(!accordionCollapsed)}}
+                  items={[]}
+                  onClick={()=>{}}
        />
 
        <UncontrolledOnOff onChange={setOn}/> {on.toString()}

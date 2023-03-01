@@ -5,14 +5,15 @@ type ItemType = {
   title: string
   value: any
 }
-
+/**
+ * example for comment, you should input /**, and after that pushed button 'enter'
+ */
 export type AccordionPropsType = {
   title: string
   collapsed: boolean
-  /**
-   * example for comment, you should input /**, and after that pushed button 'enter'
-   */
   setAccordionCollapsed: () => void
+  items: Array<ItemType>
+  onClick: (value: any)=>void
 }
 
 function Accordion(props: AccordionPropsType) {
@@ -21,7 +22,9 @@ function Accordion(props: AccordionPropsType) {
     <AccordionTitle title={props.title}
                     onClick={props.setAccordionCollapsed}
     />
-    {!props.collapsed && <AccordionBody/>}
+    {!props.collapsed && <AccordionBody items={props.items}
+                                        onClick={props.onClick}
+    />}
   </>
 }
 
@@ -38,13 +41,14 @@ function AccordionTitle(props: AccordionTitlePropsType) {
 }
 
 export type AccordionBodyPropsType = {
-
+items: Array<ItemType>
+  onClick: (value: any)=>void
 }
 
 function AccordionBody(props: AccordionBodyPropsType) {
   console.log("AccordionBody rendering")
   return <ul>
-    <li>1</li>
+    {props.items.map((i, index) => <li onClick={()=>{props.onClick(i.value)}} key={index}>{i.title}</li>)}
   </ul>
 }
 
