@@ -3,7 +3,6 @@ import React, {useState} from "react";
 type StarPropsType = {
   selected: boolean
   setValue: (value: 0 | 1 | 2 | 3 | 4 | 5) => void
-  //value: 0|1|2|3|4|5
 }
 
 function Star(props: StarPropsType) {
@@ -18,6 +17,7 @@ function Star(props: StarPropsType) {
 export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5
 
 type RatingPropsType = {
+  defaultValue?: RatingValueType
   onChange: (value: RatingValueType) => void
 }
 
@@ -25,7 +25,7 @@ type RatingPropsType = {
 export function UncontrolledRating(props: RatingPropsType) {
   console.log("Rating rendering")
 
-  let [value, setValue] = useState(1)
+  let [value, setValue] = useState<RatingValueType>(props.defaultValue ? props.defaultValue : 0)
 
   return <div>
     <Star selected={value > 0} setValue={() => {
@@ -42,7 +42,7 @@ export function UncontrolledRating(props: RatingPropsType) {
     }}/>
     <Star selected={value > 3} setValue={() => {
       setValue(4);
-      props.onChange(4)
+     props.onChange(4)
     }}/>
     <Star selected={value > 4} setValue={() => {
       setValue(5);
