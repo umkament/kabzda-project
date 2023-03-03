@@ -6,8 +6,4 @@
     position: absolute;
     border: 1px black solid;
     padding: 5px;
-    display: none;
-}
-.select.active .items {
-    display: block;
 }
