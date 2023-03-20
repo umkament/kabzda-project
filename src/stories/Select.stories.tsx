@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Select} from "./Select";
 import {action} from "@storybook/addon-actions";
 
@@ -8,19 +8,29 @@ export default {
   component: Select
 }
 
-export const SelectExample = () => <Select value={'2'}
-                                           onChange={action('value changed')}
-                                           items={[
-                                             {value: '1', title: 'Volgograd'},
-                                             {value: '2', title: 'Minsk'},
-                                             {value: '3', title: 'Sochi'},
-                                           ]}
-/>
+export const SelectExample = () => {
 
-export const SelectWithoutValue = () => <Select onChange={action('value changed')}
-                                                items={[
-                                                  {value: '1', title: 'Volgograd'},
-                                                  {value: '2', title: 'Minsk'},
-                                                  {value: '3', title: 'Sochi'},
-                                                ]}
-/>
+  const [value, setValue]= useState('2')
+
+  return <Select value={value}
+          onChange={setValue}
+          items={[
+            {value: '1', title: 'Volgograd'},
+            {value: '2', title: 'Minsk'},
+            {value: '3', title: 'Sochi'},
+          ]}
+  />
+}
+
+export const SelectWithoutValue = () => {
+  const [value, setValue]= useState(null)
+
+  return <Select onChange={setValue}
+                 value={value}
+                 items={[
+                   {value: '1', title: 'Volgograd'},
+                   {value: '2', title: 'Minsk'},
+                   {value: '3', title: 'Sochi'},
+                 ]}
+  />
+}
