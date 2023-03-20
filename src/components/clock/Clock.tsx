@@ -9,11 +9,17 @@ export const Clock: React.FC<PropsType> = (props) => {
   const [date, setDate] = useState(new Date())
 
   useEffect(() => {
+
     console.log('useEffect')
-    setInterval(() => {
+    const intervalID = setInterval(() => {
       console.log('setInterval')
       setDate(new Date())
     }, 1000)
+
+    return ()=>{
+      clearInterval(intervalID)
+    }
+
   }, [])
 
   // const secondsString =getTwoDigitsStrings(date.getSeconds())
