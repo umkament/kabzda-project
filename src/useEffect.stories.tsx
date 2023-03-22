@@ -7,7 +7,7 @@ export default {
 export const KeysTrackerExample = () => {
   const [text, setText] = useState('')
 
-  useEffect(()=> {
+  useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       setText(text + e.key)
     }
@@ -18,9 +18,8 @@ export const KeysTrackerExample = () => {
   }, [text])
 
   return <>
-  Typed text: {text}
+    Typed text: {text}
   </>
-
 
 
 }

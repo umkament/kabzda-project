@@ -19,7 +19,7 @@ export const Clock: React.FC<PropsType> = (props) => {
       setDate(new Date())
     }, 1000)
 
-    return ()=>{
+    return () => {
       clearInterval(intervalID)
     }
 
@@ -69,11 +69,11 @@ export const AnalogClockView: React.FC<ClockViewPropsType> = ({date}) => {
   };
 
   return <div className={style.clock}>
-   <div className={style["analog-clock"]}>
-     <div className={`${style.dial} ${style.seconds}`} style={secondsStyle} />
-     <div className={`${style.dial} ${style.minutes}`} style={minutesStyle} />
-     <div className={`${style.dial} ${style.hours}`} style={hoursStyle} />
-   </div>
- </div>
+    <div className={style["analog-clock"]}>
+      <div className={`${style.dial} ${style.seconds}`} style={secondsStyle}/>
+      <div className={`${style.dial} ${style.minutes}`} style={minutesStyle}/>
+      <div className={`${style.dial} ${style.hours}`} style={hoursStyle}/>
+    </div>
+  </div>
 }
 

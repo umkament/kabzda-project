@@ -12,13 +12,13 @@ export const SetTimeoutExample = () => {
   console.log('SetTimeoutExample')
 
   useEffect(() => {
-   const intervalID = setInterval (()=>{
-      setCounter (s => s + 1)
+    const intervalID = setInterval(() => {
+      setCounter(s => s + 1)
     }, 3000)
-    return ()=> {
+    return () => {
       clearInterval(intervalID)
     }
-     }, [])
+  }, [])
 
   return <>
     counter - {counter}
